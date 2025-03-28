@@ -1,5 +1,5 @@
 ~~~
-project-89/
+Quantum-Veil/
 │
 ├── Cargo.toml                     # Rust project configuration
 ├── README.md                      # Project documentation
