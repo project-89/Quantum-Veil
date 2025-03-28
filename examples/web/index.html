@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 89: Quantum Veil Demo</title>
+  <link rel="stylesheet" href="./public/css/styles.css">
+  <link rel="icon" type="image/png" href="./public/images/favicon.png">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="logo-container">
+        <img src="./public/images/logo.svg" alt="Project 89 Logo" class="logo">
+        <h1>PROJECT 89: QUANTUM VEIL</h1>
+      </div>
+      <div class="wallet-section">
+        <button id="connect-wallet" class="connect-btn">Connect Wallet</button>
+        <div id="wallet-info" class="wallet-info hidden">
+          <span id="wallet-address"></span>
+          <button id="disconnect-wallet" class="disconnect-btn">Disconnect</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="nft-privacy">NFT Privacy</button>
+        <button class="tab-btn" data-tab="vrm-demo">VRM Demo</button>
+        <button class="tab-btn" data-tab="about">About</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- NFT Privacy Tab -->
+        <div id="nft-privacy" class="tab-pane active">
+          <div class="intro">
+            <h2>Protect Your Glitch Gang NFTs</h2>
+            <p>Add privacy protection to your existing Glitch Gang NFTs without re-minting.</p>
+          </div>
+
+          <div class="nft-container">
+            <div class="nft-selection">
+              <h3>Select NFT</h3>
+              <div id="nft-list" class="nft-grid">
+                <!-- NFT items will be loaded here -->
+                <div class="loading-indicator">Loading your NFTs...</div>
+              </div>
+            </div>
+
+            <div class="privacy-settings">
+              <h3>Privacy Settings</h3>
+              <div class="settings-container">
+                <div class="setting-group">
+                  <label for="privacy-level">Privacy Level:</label>
+                  <select id="privacy-level">
+                    <option value="0">None - No protection</option>
+                    <option value="1">Light - Basic protection</option>
+                    <option value="2" selected>Medium - Standard protection</option>
+                    <option value="3">Heavy - Enhanced protection</option>
+                    <option value="4">Complete - Maximum protection</option>
+                  </select>
+                </div>
+
+                <div class="setting-group">
+                  <label>Protected Attributes:</label>
+                  <div id="protected-attributes" class="attribute-list">
+                    <div class="attribute-row">
+                      <input type="checkbox" id="attr-agent-name" checked>
+                      <label for="attr-agent-name">Agent Name</label>
+                    </div>
+                    <div class="attribute-row">
+                      <input type="checkbox" id="attr-secret-code" checked>
+                      <label for="attr-secret-code">Secret Code</label>
+                    </div>
+                    <div class="attribute-row">
+                      <input type="checkbox" id="attr-mission" checked>
+                      <label for="attr-mission">Mission</label>
+                    </div>
+                    <div class="attribute-row">
+                      <input type="checkbox" id="attr-origin" checked>
+                      <label for="attr-origin">Origin</label>
+                    </div>
+                    <div class="attribute-row">
+                      <input type="checkbox" id="attr-accessory">
+                      <label for="attr-accessory">Accessory</label>
+                    </div>
+                    <div class="attribute-row">
+                      <input type="checkbox" id="attr-symbols">
+                      <label for="attr-symbols">Symbols</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="setting-group">
+                  <label for="vrm-model">VRM Model URL (optional):</label>
+                  <input type="text" id="vrm-model" placeholder="https://models.glitchgang.io/avatar.vrm">
+                </div>
+
+                <div class="action-buttons">
+                  <button id="apply-privacy" class="primary-btn" disabled>Apply Privacy Protection</button>
+                  <button id="download-metadata" class="secondary-btn" disabled>Download Protected Metadata</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="metadata-preview" class="metadata-preview hidden">
+            <h3>Metadata Preview</h3>
+            <div class="metadata-comparison">
+              <div class="metadata-original">
+                <h4>Original Metadata</h4>
+                <pre id="original-json"></pre>
+              </div>
+              <div class="metadata-protected">
+                <h4>Protected Metadata</h4>
+                <pre id="protected-json"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VRM Demo Tab -->
+        <div id="vrm-demo" class="tab-pane">
+          <div class="vrm-container">
+            <div class="vrm-viewer">
+              <canvas id="vrm-canvas"></canvas>
+              <div class="vrm-controls">
+                <button id="reset-camera" class="control-btn">Reset Camera</button>
+                <button id="toggle-animation" class="control-btn">Toggle Animation</button>
+              </div>
+            </div>
+
+            <div class="privacy-demo">
+              <h3>Privacy Demonstration</h3>
+              
+              <div class="demo-controls">
+                <div class="setting-group">
+                  <label for="demo-privacy-level">Privacy Level:</label>
+                  <select id="demo-privacy-level">
+                    <option value="0">None - No protection</option>
+                    <option value="1">Light - Basic protection</option>
+                    <option value="2" selected>Medium - Standard protection</option>
+                    <option value="3">Heavy - Enhanced protection</option>
+                    <option value="4">Complete - Maximum protection</option>
+                  </select>
+                </div>
+
+                <div class="setting-group">
+                  <label for="demo-viewer-type">Viewer Type:</label>
+                  <select id="demo-viewer-type">
+                    <option value="public">Public (Anonymous)</option>
+                    <option value="trusted">Trusted Agent</option>
+                    <option value="owner">Owner</option>
+                  </select>
+                </div>
+                
+                <div class="setting-group">
+                  <label>Protect:</label>
+                  <div class="protect-options">
+                    <div class="protect-row">
+                      <input type="checkbox" id="protect-position" checked>
+                      <label for="protect-position">Position</label>
+                    </div>
+                    <div class="protect-row">
+                      <input type="checkbox" id="protect-rotation" checked>
+                      <label for="protect-rotation">Rotation</label>
+                    </div>
+                    <div class="protect-row">
+                      <input type="checkbox" id="protect-gesture" checked>
+                      <label for="protect-gesture">Gestures</label>
+                    </div>
+                    <div class="protect-row">
+                      <input type="checkbox" id="protect-voice" checked>
+                      <label for="protect-voice">Voice</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="privacy-stats">
+                <h4>Privacy Effects</h4>
+                <div id="position-stats" class="stat-row">
+                  <span class="stat-label">Position:</span>
+                  <span class="stat-value">(0.0, 0.0, 0.0)</span>
+                </div>
+                <div id="rotation-stats" class="stat-row">
+                  <span class="stat-label">Rotation:</span>
+                  <span class="stat-value">(0.0, 0.0, 0.0, 1.0)</span>
+                </div>
+                <div id="gesture-stats" class="stat-row">
+                  <span class="stat-label">Gesture Intensity:</span>
+                  <span class="stat-value">0.0</span>
+                </div>
+                <div id="voice-stats" class="stat-row">
+                  <span class="stat-label">Voice Distortion:</span>
+                  <span class="stat-value">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about" class="tab-pane">
+          <div class="about-content">
+            <h2>About Project 89: Quantum Veil</h2>
+            <p>Project 89: Quantum Veil is a privacy system for NFTs on Solana blockchain, developed by the Glitch Gang collective.</p>
+            
+            <h3>Key Features</h3>
+            <ul>
+              <li><strong>Quantum Veil Encryption:</strong> Dynamic encryption keys generated from multiple entropy sources</li>
+              <li><strong>Synchronicity Mask:</strong> VRM behavior protection for privacy-preserving 3D avatars</li>
+              <li><strong>Timeline Shifter:</strong> Metadata fragmentation across distributed storage</li>
+              <li><strong>Privacy Wrapper:</strong> Wrap existing NFTs with advanced privacy features</li>
+            </ul>
+            
+            <h3>Developers</h3>
+            <p>Created by the Glitch Gang Collective - a team of privacy-focused developers dedicated to digital sovereignty in the metaverse.</p>
+            
+            <div class="links">
+              <a href="https://github.com/glitch-gang/project-89" target="_blank" class="link-btn">GitHub</a>
+              <a href="https://docs.glitch.gang/project-89" target="_blank" class="link-btn">Documentation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Glitch Gang Collective | <a href="https://glitch.gang" target="_blank">glitch.gang</a></p>
+    </footer>
+  </div>
+
+  <!-- Status Modal -->
+  <div id="status-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Processing...</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="status-spinner"></div>
+        <p id="modal-message">Please wait while we process your request.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="./src/index.js"></script>
+</body>
+</html>
