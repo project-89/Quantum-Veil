@@ -1,109 +1,112 @@
-~~~
-Quantum-Veil/
+project-89/
 │
-├── Cargo.toml                     # Root project configuration (Rust workspace)
-├── README.md                      # Project overview and setup instructions
-├── LICENSE                        # License file (e.g., MIT or Apache-2.0)
+├── Cargo.toml                     # Rust project configuration
+├── README.md                      # Project documentation
+├── LICENSE                        # MIT license file
 │
-├── solana/                        # Solana program components
-│   ├── privacy_wrapper/           # Privacy wrapper Solana program
-│   │   ├── Cargo.toml             # Program-specific dependencies
+├── solana/                        # Solana smart contracts
+│   ├── privacy_wrapper/           # Privacy wrapper program
+│   │   ├── Cargo.toml             # Program dependencies
 │   │   └── src/
-│   │       ├── lib.rs             # Program entrypoint (from file#1: declares modules)
-│   │       ├── instruction.rs     # Instruction definitions (from file#1: WrapperInstruction enum)
-│   │       ├── processor.rs       # Instruction processors (from file#1: process_instruction and handlers)
-│   │       ├── state.rs           # Program state (from file#1: PrivacyWrapper struct)
-│   │       └── error.rs           # Custom error types (placeholder for future errors)
+│   │       ├── lib.rs             # Program entrypoint
+│   │       ├── instruction.rs     # Instruction definitions
+│   │       ├── processor.rs       # Instruction processors
+│   │       ├── state.rs           # Program state definitions
+│   │       └── error.rs           # Custom error types
 │   │
 │   └── tests/                     # Solana program tests
-│       └── integration_tests.rs   # Integration test suite (to be implemented)
+│       └── integration_tests.rs   # Integration test suite
 │
 ├── core/                          # Core Rust library components
-│   ├── Cargo.toml                 # Core library dependencies
+│   ├── Cargo.toml                 # Library dependencies
 │   └── src/
-│       ├── lib.rs                 # Library entrypoint (exports sub-modules)
-│       ├── quantum_veil/          # Quantum encryption system (from file#2)
+│       ├── lib.rs                 # Library entrypoint
+│       ├── quantum_veil/          # Quantum encryption system
 │       │   ├── mod.rs             # Module declarations
-│       │   ├── encryption.rs      # Encryption utilities (encrypt_data, decrypt_data from file#2)
-│       │   ├── key_gen.rs         # Key generation (encryption_key from file#2)
-│       │   └── config.rs          # Privacy configuration (PrivacyConfig from file#2)
+│       │   ├── encryption.rs      # Encryption utilities
+│       │   ├── key_gen.rs         # Key generation
+│       │   └── config.rs          # Configuration types
 │       │
-│       ├── synchronicity_mask/    # VRM privacy masking (from file#2)
+│       ├── synchronicity_mask/    # VRM privacy masking
 │       │   ├── mod.rs             # Module declarations
-│       │   ├── vrm_data.rs        # VRM data structures (VrmData from file#2)
-│       │   ├── privacy_levels.rs  # Privacy level definitions (PrivacyLevel from file#2)
-│       │   └── masking.rs         # Data masking algorithms (process_vrm_data from file#2)
+│       │   ├── vrm_data.rs        # VRM data structures
+│       │   ├── privacy_levels.rs  # Privacy level definitions
+│       │   └── masking.rs         # Data masking algorithms
 │       │
-│       └── timeline_shifter/      # Metadata fragmentation (from file#2)
+│       └── timeline_shifter/      # Metadata fragmentation
 │           ├── mod.rs             # Module declarations
-│           ├── fragment.rs        # Fragment definitions (MetadataFragment from file#2)
-│           ├── storage.rs         # Storage logic (fracture_metadata from file#2)
-│           └── timeline.rs        # Timeline definitions (TimelineType from file#2)
+│           ├── fragment.rs        # Fragment definitions
+│           ├── storage/           # Storage adapters
+│           │   ├── mod.rs         # Storage declarations
+│           │   ├── ipfs.rs        # IPFS adapter
+│           │   ├── arweave.rs     # Arweave adapter
+│           │   └── solana.rs      # Solana storage adapter
+│           └── timeline.rs        # Timeline definitions
 │
-├── client/                        # Client implementations
-│   ├── rust/                      # Rust client (from file#2)
-│   │   ├── Cargo.toml             # Rust client dependencies
+├── client/                        # Client libraries
+│   ├── rust/                      # Rust client
+│   │   ├── Cargo.toml             # Client dependencies
 │   │   └── src/
 │   │       ├── lib.rs             # Client entrypoint
-│   │       ├── client.rs          # Main client impl (GlitchGangPrivacyClient from file#2)
-│   │       ├── models.rs          # Data models (GlitchGangMetadata, PrivateData from file#2)
-│   │       └── utils.rs           # Helper utilities (fetch_metadata, etc. from file#2)
+│   │       ├── client.rs          # Main client implementation
+│   │       └── utils.rs           # Client utilities
 │   │
-│   └── typescript/                # TypeScript client (from file#3)
-│       ├── package.json           # npm dependencies (solana/web3.js, three-vrm, etc.)
+│   └── typescript/                # TypeScript/JavaScript client
+│       ├── package.json           # npm configuration
 │       ├── tsconfig.json          # TypeScript configuration
 │       └── src/
-│           ├── index.ts           # Main exports (exports GlitchGangPrivacyClient)
-│           ├── client.ts          # Client impl (GlitchGangPrivacyClient from file#3)
+│           ├── index.ts           # Main exports
+│           ├── client.ts          # Client implementation
 │           ├── models/            # Type definitions
 │           │   ├── index.ts       # Type exports
-│           │   ├── metadata.ts    # Metadata types (GlitchGangMetadata from file#3)
-│           │   └── vrm.ts         # VRM types (VrmData from file#3)
+│           │   ├── metadata.ts    # Metadata types
+│           │   └── vrm.ts         # VRM data types
 │           ├── crypto/            # Cryptography wrappers
 │           │   ├── index.ts       # Crypto exports
-│           │   └── encryption.ts  # Encryption utils (encrypt, decrypt referenced in file#3)
+│           │   └── encryption.ts  # Encryption utilities
 │           └── utils/             # Helper utilities
 │               ├── index.ts       # Utility exports
-│               └── solana.ts      # Solana-specific helpers (connection handling)
+│               └── solana.ts      # Solana helpers
 │
-├── examples/                      # Usage examples
-│   ├── rust/                      # Rust examples (from file#2 main function)
+├── examples/                      # Example usage
+│   ├── rust/                      # Rust examples
 │   │   ├── Cargo.toml             # Example dependencies
 │   │   └── src/
-│   │       └── main.rs            # CLI example (main function from file#2)
+│   │       ├── main.rs            # CLI example
+│   │       └── bin/
+│   │           ├── wrap_nft.rs    # NFT wrapping example
+│   │           └── protect_vrm.rs # VRM protection example
 │   │
-│   └── web/                       # Web examples (from file#4)
-│       ├── package.json           # Web app dependencies (react, three, etc.)
-│       ├── index.html             # Main HTML file
+│   └── web/                       # Web examples
+│       ├── package.json           # Web app dependencies
+│       ├── index.html             # Main HTML
 │       ├── public/                # Static assets
 │       └── src/
-│           ├── App.tsx            # Main React app (integrates PrivacyPanel)
+│           ├── App.tsx            # Main React component
 │           ├── components/        # UI components
-│           │   ├── PrivacyPanel.tsx  # Privacy controls UI (file#4)
-│           │   └── VrmViewer.tsx  # 3D VRM viewer (placeholder for future impl)
+│           │   ├── PrivacyPanel.tsx  # Privacy controls UI
+│           │   └── VrmViewer.tsx  # 3D VRM viewer
 │           └── utils/             # Frontend utilities
-│               └── index.ts       # Utility exports
 │
 ├── tools/                         # Utility tools
 │   ├── keygen/                    # Key generation tool
 │   │   ├── Cargo.toml             # Tool dependencies
 │   │   └── src/
-│   │       └── main.rs            # Key generator (placeholder for keypair generation)
-│   └── metadata-viewer/           # Metadata explorer
+│   │       └── main.rs            # Key generator
+│   └── timeline-viewer/           # Fragment explorer
 │       ├── Cargo.toml             # Tool dependencies
 │       └── src/
-│           └── main.rs            # Metadata visualization (placeholder)
+│           └── main.rs            # Timeline visualization
 │
 └── docs/                          # Documentation
-    ├── architecture.md            # System architecture overview
+    ├── architecture.md            # System architecture
     ├── api/                       # API documentation
-    │   ├── rust.md                # Rust API docs (client.rs, core modules)
-    │   └── typescript.md          # TypeScript API docs (client.ts)
+    │   ├── rust.md                # Rust API docs
+    │   └── typescript.md          # TypeScript API docs
     ├── diagrams/                  # Architectural diagrams
-    │   ├── system-overview.svg    # High-level system overview
+    │   ├── system-overview.svg    # High-level overview
     │   └── data-flow.svg          # Data flow diagram
     └── guides/                    # Usage guides
         ├── getting-started.md     # Quickstart guide
-        ├── privacy-controls.md    # Privacy wrapper and levels guide
-        └── integration.md         # Integration with Daydreams framework
-~~~
+        ├── privacy-levels.md      # Privacy level guide
+        └── integration.md         # Integration guide
