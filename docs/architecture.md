@@ -58,6 +58,7 @@ Quantum-Veil/
 │       └── src/
 │           ├── index.ts           # Main exports
 │           ├── client.ts          # Client implementation
+│           ├── crypto.ts          # Cryptographic utilities
 │           ├── models/            # Type definitions
 │           │   ├── index.ts       # Type exports
 │           │   ├── metadata.ts    # Metadata types
