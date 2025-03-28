@@ -1,0 +1,41 @@
+{
+  "name": "project-89-web-demo",
+  "version": "0.1.0",
+  "description": "Web demo for Project 89: Quantum Veil privacy system",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "solana",
+    "nft",
+    "privacy",
+    "glitch-gang",
+    "vrm",
+    "3d"
+  ],
+  "author": "Glitch Gang Collective",
+  "license": "MIT",
+  "dependencies": {
+    "@pixiv/three-vrm": "^0.6.7",
+    "@solana/web3.js": "^1.68.0",
+    "base-64": "^1.0.0",
+    "borsh": "^0.7.0",
+    "project-89-quantum-veil": "^0.1.0",
+    "three": "^0.149.0"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  },
+  "browserslist": [
+    "last 1 Chrome version",
+    "last 1 Firefox version",
+    "last 1 Safari version"
+  ]
+}
