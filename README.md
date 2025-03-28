@@ -8,7 +8,7 @@
 
 ## OVERVIEW
 
-Project 89: Quantum Veil is a next-generation privacy framework for NFT agents deployed on Solana. Designed specifically for the Project 89 Proxim8 collection, this system implements quantum-grade encryption, adaptive privacy masks, and reality-shifting data fragmentation to protect digital identities in the metaverse.
+Project 89: Quantum Veil is a next-generation privacy framework for NFT agents deployed on Solana. Designed specifically for the Proxim8 collection, this system implements quantum-grade encryption, adaptive privacy masks, and reality-shifting data fragmentation to protect digital identities in the metaverse.
 
 ## FEATURES
 
