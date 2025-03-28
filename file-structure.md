@@ -1,4 +1,5 @@
-project-89/
+~~~
+Quantum-Veil/
 │
 ├── Cargo.toml                     # Root project configuration (Rust workspace)
 ├── README.md                      # Project overview and setup instructions
@@ -105,3 +106,4 @@ project-89/
         ├── getting-started.md     # Quickstart guide
         ├── privacy-controls.md    # Privacy wrapper and levels guide
         └── integration.md         # Integration with Daydreams framework
+~~~
