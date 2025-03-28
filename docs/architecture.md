@@ -1,3 +1,4 @@
+~~~
 project-89/
 │
 ├── Cargo.toml                     # Rust project configuration
@@ -110,3 +111,4 @@ project-89/
         ├── getting-started.md     # Quickstart guide
         ├── privacy-levels.md      # Privacy level guide
         └── integration.md         # Integration guide
+~~~
